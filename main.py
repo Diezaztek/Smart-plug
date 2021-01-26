@@ -9,7 +9,6 @@ Created on Mon Jan  4 14:01:29 2021
 import psutil
 import requests
 import os
-import time
 
 from dotenv import load_dotenv
 load_dotenv()
