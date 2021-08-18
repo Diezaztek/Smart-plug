@@ -14,6 +14,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 WEBHOOK_KEY = os.getenv('WEBHOOK_KEY')
+LOWER_BOUND = int(os.getenv('LOWER_BOUND', 25))
+UPPER_BOUND = int(os.getenv('UPPER_BOUND', 90))
 TURN_OFF_URL = f'https://maker.ifttt.com/trigger/turn_plug_off/with/key/{WEBHOOK_KEY}'
 TURN_ON_URL = f'https://maker.ifttt.com/trigger/turn_plug_on/with/key/{WEBHOOK_KEY}'
 
@@ -21,13 +23,7 @@ battery = psutil.sensors_battery()
 is_plugged = battery.power_plugged
 percent = battery.percent
 
-if not is_plugged and percent <= 25:
-    print("Turn on")
+if not is_plugged and percent <= LOWER_BOUND:
     r = requests.post(url=TURN_ON_URL)
-    print(r.json)
-elif is_plugged and percent >= 90:
-    print("Turn off")
+elif is_plugged and percent >= UPPER_BOUND:
     r = requests.post(url=TURN_OFF_URL)
-    print(r.json)
-else:
-    print('No action required')

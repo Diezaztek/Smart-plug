@@ -212,7 +212,7 @@ crontab -e
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-You can modify the frequency the python script will be executed by changing the cronjob. Also for change the range whereas the plug should turn or on off, you just need to edit the lines 24 and 28 in the main.py file
+You can modify the frequency the python script will be executed by changing the cronjob. Also for change the range whereas the plug should turn or on off, you just need to edit .env file
 
 <!-- LICENSE -->
 ## License
